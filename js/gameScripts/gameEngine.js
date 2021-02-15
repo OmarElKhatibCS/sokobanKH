@@ -41,16 +41,13 @@ var gameEngine = new Phaser.Class({
     this.shown = 0;
 
     this.input.on("pointerdown" , (pointer)=>{
-      // TODO(Omar) : Weird bug here I use this because the game changing the first row with no logical reason.
+      // @TODO(Omar) : Weird bug here I use this because the game changing the first row with no logical reason.
       this.level[0] = this.copyArray(new Array(this.level.length).fill(1));
       var copyOfLevel = this.copyArray(this.level);
       this.goal = [Math.floor(pointer.x/this.tileSize),Math.floor(pointer.y/this.tileSize)];
 
       // this.shown to check if I was already pressed on player to get rid sprites added in showValidMoves 
       if(this.goal[1] == this.playerLocation.x && this.goal[0] == this.playerLocation.y || this.shown) {
-        //he la2ofsol el keyboard 3an touch
-        // la2an momkn kun 3ml touch bnfs w2t hrk bl keyboardControl
-        //fa bdaln el suwar m3l2in 3a cheche
         this.comeFromTouch = 1;
         this.showValidMoves();
       }
